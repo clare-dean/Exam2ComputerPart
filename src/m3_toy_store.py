@@ -13,7 +13,11 @@
 #
 #   Once you have done this, then change the above _TODO_ to DONE.
 ###############################################################################
+def get_toy():
+    return input("Please enter a toy: ")
 
+user_input = get_toy()
+print(f"You entered: {user_input}")
 ###############################################################################
 # TODO: 2. (3 pts)
 #
@@ -26,7 +30,11 @@
 #
 #   Once you have done this, then change the above _TODO_ to DONE.
 ###############################################################################
+def get_price():
+    return float(input("Please enter a price: "))
 
+price = get_price()
+print(f"You entered: {price}")
 ###############################################################################
 # TODO: 3. (5 pts)
 ##
@@ -43,7 +51,12 @@
 #
 #   Once you have done this, then change the above _TODO_ to DONE.
 ###############################################################################
-
+def toy_price(toy: str, price: float) -> tuple:
+    return (toy, price)
+toy = "train"
+price = 5.99
+toy_tuple = toy_price(toy, price)
+print(toy_tuple)
 ###############################################################################
 # TODO: 4. (5 pts)
 #
@@ -61,6 +74,12 @@
 #
 #   Once you have done this, then change the above _TODO_ to DONE.
 ###############################################################################
+def calculate_total_price(toy:str, price:float):
+   def calculate_total_price(toys: list) -> float:
+    total_price = 0
+    for toy, price in toys:
+        total_price += price
+    return total_price 
 
 ###############################################################################
 # TODO: 5. (8 pts)
@@ -89,3 +108,43 @@
 #
 #   Once you have done this, then change the above _TODO_ to DONE.
 ###############################################################################
+def main():
+   def get_toy():
+    return input("Please enter a toy (or 'end' to stop): ")
+
+def get_price():
+    price_str = input("Please enter the price of the toy (or 'end' to stop): ")
+    if price_str.lower() == "end":
+        return None
+    return float(price_str)
+
+def toy_price(toy: str, price: float) -> tuple:
+    return (toy, price)
+
+def calculate_total_price(toys: list) -> float:
+    total_price = 0
+    for _, price in toys:
+        total_price += price
+    return total_price
+
+def main():
+    toys = []
+    while True:
+        toy = get_toy()
+        if toy.lower() == "end":
+            break
+        price = get_price()
+        if price is None:
+            break
+        toys.append(toy_price(toy, price))
+
+    total_price = calculate_total_price(toys)
+
+    for toy, price in toys:
+        print(f"{toy}: ${price}")
+
+    print(f"Total Cost: ${total_price}")
+
+if __name__== "main":
+    main()
+
